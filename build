@@ -1,0 +1,3 @@
+cd src/main/resources/js/
+browserify lib/* main.js modules/* > ./bundle/bundle.js
+cd -
