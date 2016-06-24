@@ -8,6 +8,18 @@ var serve = serveStatic('./src/main/resources', {'index': ['index.html', 'index.
 
 var server = http.createServer(function (request, response) {
 
+    var url = request.url;
+    console.log("URL: " + url);
+    if (url === "/api/text") {
+        response.end("42");
+        return;
+    }
+    else if (url === "/api/json") {
+        var json = { "test": 42 };
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify(json));
+        return;
+    }
     serve(request, response, finalhandler(request, response));
 });
 server.listen(8000);

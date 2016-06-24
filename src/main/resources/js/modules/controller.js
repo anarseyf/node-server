@@ -7,6 +7,9 @@ var controller = function ($scope, TestService) {
     };
 
     console.log("TestController loaded");
+    TestService.serverApi.json().then(function (response) {
+        $scope.model.serviceTestValue = response.data;
+    });
 };
 
 app.controller("TestController", controller);
