@@ -31800,20 +31800,34 @@ var angular = require("angular");
 angular.module("App", []);
 
 window.onload = function () {
-    document.getElementById("test").textContent = "ok";  
+    console.log("window.onload");  
 };
 
 
 },{"angular":2}],5:[function(require,module,exports){
-var angular = require("angular");
-var app = angular.module("App");
+var app = require("angular").module("App");
 
-var controller = function ($scope) {
-    $scope.test = function () {
-        return "TEST OK";  
+var controller = function ($scope, TestService) {
+    $scope.model = {
+        moduleName: "Module 1",
+        serviceTestValue: TestService.getTestValue()
     };
+
+    console.log("TestController loaded");
 };
 
 app.controller("TestController", controller);
 module.exports = controller;
-},{"angular":2}]},{},[3,4,5]);
+},{"angular":2}],6:[function(require,module,exports){
+var app = require("angular").module("App");
+
+var service = function ($http) {
+    this.getTestValue = function () {
+        return 42;
+    };
+    return this;
+};
+
+app.factory("TestService", service);
+module.exports = service;
+},{"angular":2}]},{},[3,4,5,6]);

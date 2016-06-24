@@ -3,10 +3,10 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-    <div class="container" id="test">test</div>
     <div class="container"
         ng-controller="TestController">
-        <div>test: {{ test() }}</div>
+        <div>Angular module: {{ model.moduleName }}</div>
+        <div>serviceTestValue: {{ model.serviceTestValue }}</div>
     </div>
 
     <script src="./js/bundle/bundle.js"></script>
